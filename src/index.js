@@ -14,7 +14,7 @@ function App() {
       <h1>Basic D3 Scatter Plot Graph</h1>
       <br />
       <svg width="800" height="800">
-        <Scatterplot x={0} y={0} data={data} />
+        <Scatterplot x={0} y={0} data={data} width={300} height={200} />
       </svg>
     </div>
   );

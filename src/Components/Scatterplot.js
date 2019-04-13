@@ -5,11 +5,11 @@ class Scatterplot extends Component {
   xScale = d3
     .scaleLinear()
     .domain([0, 1])
-    .range([0, 300]);
+    .range([0, this.props.width]);
   yScale = d3
     .scaleLinear()
     .domain([0, 1])
-    .range([0, 200]);
+    .range([0, this.props.height]);
 
   dataPlotHandler = data => {
     return data.map(([x, y]) => (
