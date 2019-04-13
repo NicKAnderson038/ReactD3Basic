@@ -5,7 +5,10 @@
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
+    "@emotion/core": "10.0.10",
+    "@emotion/styled": "10.0.10",
     "d3": "5.9.2",
+    "emotion": "10.0.9",
     "react": "16.8.3",
     "react-dom": "16.8.3",
     "react-scripts": "2.1.8"
