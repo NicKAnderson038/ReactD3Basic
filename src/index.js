@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import * as d3 from "d3";
 
 import "./styles.css";
+import Scatterplot from "./Components/Scatterplot";
 
 const data = d3.range(100).map(() => [Math.random(), Math.random()]);
 
@@ -11,6 +12,9 @@ function App() {
   return (
     <div className="App">
       <h1>Basic D3 Scatter Plot Graph</h1>
+      <svg width="800" height="800">
+        <Scatterplot x={0} y={0} data={data} />
+      </svg>
     </div>
   );
 }
