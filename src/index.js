@@ -1,13 +1,13 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import * as d3 from "d3";
+import React from "react"
+import ReactDOM from "react-dom"
+import * as d3 from "d3"
 
-import "./styles.css";
-import Scatterplot from "./Components/Scatterplot";
+import "./styles.css"
+import Scatterplot from "./Components/Scatterplot"
 
-const data = d3.range(100).map(() => [Math.random(), Math.random()]);
+const data = d3.range(100).map(() => [Math.random(), Math.random()])
 
-console.log(data);
+console.log(data)
 function App() {
   return (
     <div className="App">
@@ -17,8 +17,8 @@ function App() {
         <Scatterplot x={0} y={0} data={data} width={300} height={200} />
       </svg>
     </div>
-  );
+  )
 }
 
-const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+const rootElement = document.getElementById("root")
+ReactDOM.render(<App />, rootElement)
