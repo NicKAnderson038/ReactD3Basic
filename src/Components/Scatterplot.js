@@ -1,5 +1,5 @@
-import React, {Component} from "react"
-import * as d3 from "d3"
+import React, { Component } from 'react'
+import * as d3 from 'd3'
 
 class Scatterplot extends Component {
   xScale = d3
@@ -13,15 +13,24 @@ class Scatterplot extends Component {
 
   dataPlotHandler = data => {
     return data.map(([x, y]) => (
-      <circle cx={this.xScale(x)} cy={this.yScale(y)} r="3" key={`${x + y}`} />
+      <circle
+        cx={this.xScale(x)}
+        cy={this.yScale(y)}
+        r="3"
+        key={`${x + y}`}
+      />
     ))
   }
 
   render() {
-    const {x, y, data} = this.props
+    const { x, y, data } = this.props
 
     return (
-      <g transform={`translate(${x}, ${y})`}>{this.dataPlotHandler(data)}</g>
+      <g
+        transform={`translate(${x}, ${y})`}
+      >
+        {this.dataPlotHandler(data)}
+      </g>
     )
   }
 }
