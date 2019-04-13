@@ -50,6 +50,8 @@ class Axis extends React.Component {
         }
       case 'Left':
         return { x: -25, y: 0 }
+      default:
+        return null
     }
   }
 
