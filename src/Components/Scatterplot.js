@@ -13,7 +13,7 @@ class Scatterplot extends Component {
     .domain([0, 1])
     .range([0, this.props.height])
 
-  dataPlotHandler = data => {
+  dataPlotHandler = (data, height) => {
     return data.map(([x, y]) => (
       <React.Fragment>
         <circle
@@ -30,7 +30,7 @@ class Scatterplot extends Component {
         />
         <Axis
           x={0}
-          y={0}
+          y={height}
           scale={this.xScale}
           type="Bottom"
         />
@@ -49,7 +49,10 @@ class Scatterplot extends Component {
     return (
       <g
         transform={`translate(${x}, ${y})`}>
-        {this.dataPlotHandler(data)}
+        {this.dataPlotHandler(
+          data,
+          height
+        )}
       </g>
     )
   }
