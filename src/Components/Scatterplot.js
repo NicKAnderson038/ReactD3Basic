@@ -13,18 +13,15 @@ class Scatterplot extends Component {
 
   dataPlotHandler = data => {
     return data.map(([x, y]) => (
-      <circle cx={x} cy={y} r="3" key={`${x + y}`} />
+      <circle cx={this.xScale(x)} cy={this.yScale(y)} r="3" key={`${x + y}`} />
     ));
   };
 
   render() {
     const { x, y, data } = this.props;
-    const xScale = this.xScale(x);
-    const yScale = this.yScale(y);
+
     return (
-      <g transform={`translate(${xScale}, ${yScale})`}>
-        {this.dataPlotHandler(data)}
-      </g>
+      <g transform={`translate(${x}, ${y})`}>{this.dataPlotHandler(data)}</g>
     );
   }
 }
