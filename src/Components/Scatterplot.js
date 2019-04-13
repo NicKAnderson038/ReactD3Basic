@@ -11,12 +11,7 @@ class Scatterplot extends Component {
   render() {
     const { x, y, data } = this.props;
     return (
-      <g transform={`translate(${x}, ${y})`}>
-        {/* {data.map(([x, y]) => (
-          <circle cx={x} cy={y} r="3" />
-        ))} */}
-        {this.dataPlotHandler(data)}
-      </g>
+      <g transform={`translate(${x}, ${y})`}>{this.dataPlotHandler(data)}</g>
     );
   }
 }
