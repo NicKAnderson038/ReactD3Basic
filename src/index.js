@@ -4,13 +4,9 @@ import * as d3 from 'd3'
 
 import './styles.css'
 import Scatterplot from './Components/Scatterplot'
+import Datapoint from './Components/Datapoint'
 
-const data = d3
-  .range(100)
-  .map(() => [
-    Math.random(),
-    Math.random()
-  ])
+const data = d3.range(100).map(() => [Math.random(), Math.random()])
 
 console.log(data)
 class App extends Component {
@@ -29,22 +25,16 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>
-          Basic D3 Scatter Plot Graph
-        </h1>
+        <h1>Basic D3 Scatter Plot Graph</h1>
         <br />
-        <svg
-          width="800"
-          height="800"
-          onClick={() =>
-            this.onClick()
-          }>
+        <svg width="800" height="800" onClick={() => this.onClick()}>
           <Scatterplot
             x={50}
             y={50}
             data={data}
             width={this.state.width}
             height={this.state.height}
+            datapoint={({ x, y }) => <Datapoint x={x} y={y} />}
           />
         </svg>
       </div>
@@ -52,7 +42,5 @@ class App extends Component {
   }
 }
 
-const rootElement = document.getElementById(
-  'root'
-)
+const rootElement = document.getElementById('root')
 ReactDOM.render(<App />, rootElement)

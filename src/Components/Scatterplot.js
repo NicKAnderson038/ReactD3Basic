@@ -17,6 +17,7 @@ class Scatterplot extends PureComponent {
 
   static getDerivedStateFromProps(props, state) {
     const { xScale, yScale } = state
+
     xScale.range([0, props.width])
     yScale.range([0, props.height])
 
@@ -27,22 +28,23 @@ class Scatterplot extends PureComponent {
     }
   }
 
-  dataPlotHandler = (data, xScale, yScale) => {
-    return data.map(([x, y]) => (
-      <React.Fragment>
-        <circle cx={xScale(x)} cy={yScale(y)} r="3" key={`${x + y}`} />
-      </React.Fragment>
-    ))
+  dataPlotHandler = (datapoint, xScale, yScale) => {
+    return datapoint({
+      x: xScale,
+      y: yScale
+    })
   }
 
   render() {
-    const { x, y, data, height } = this.props
+    const { x, y, data, height, datapoint } = this.props
 
     const { xScale, yScale } = this.state
 
     return (
       <g transform={`translate(${x}, ${y})`}>
-        {this.dataPlotHandler(data, xScale, yScale)}
+        {data.map(([x, y]) =>
+          this.dataPlotHandler(datapoint, xScale(x), yScale(y))
+        )}
         <Axis x={0} y={0} scale={yScale} type="Left" />
         <Axis x={0} y={height} scale={xScale} type="Bottom" />
       </g>
