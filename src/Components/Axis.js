@@ -5,7 +5,7 @@ import styled from '@emotion/styled'
 const Text = styled.text`
   fill: black;
   font-family: sans-serif;
-  font-size: 10px;
+  font-size: 8px;
 `
 
 class Axis extends React.Component {

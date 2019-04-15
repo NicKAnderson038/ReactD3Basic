@@ -22,11 +22,11 @@ function App() {
       <br />
       <svg width="800" height="800">
         <Scatterplot
-          x={0}
-          y={0}
+          x={50}
+          y={50}
           data={data}
           width={300}
-          height={200}
+          height={300}
         />
       </svg>
     </div>
