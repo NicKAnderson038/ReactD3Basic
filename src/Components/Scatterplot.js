@@ -16,7 +16,7 @@ class Scatterplot extends Component {
   }
 
   static getDerivedStateFromProps(props, state) {
-    let { xScale, yScale } = state
+    const { xScale, yScale } = state
     xScale.range([0, props.width])
     yScale.range([0, props.height])
 
