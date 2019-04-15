@@ -17,7 +17,7 @@ class App extends Component {
     height2: 300
   }
 
-  onClick(flag) {
+  graphResizeHandler(flag) {
     switch (flag) {
       case 'one':
         this.setState({
@@ -45,7 +45,10 @@ class App extends Component {
       <div className="App">
         <h1>Basic D3 Scatter Plot Graph</h1>
         <br />
-        <svg width="400" height="400" onClick={() => this.onClick('one')}>
+        <svg
+          width="400"
+          height="400"
+          onClick={() => this.graphResizeHandler('one')}>
           <Scatterplot
             x={50}
             y={50}
@@ -55,7 +58,10 @@ class App extends Component {
             datapoint={({ x, y }) => <Datapoint x={x} y={y} />}
           />
         </svg>
-        <svg width="400" height="400" onClick={() => this.onClick('two')}>
+        <svg
+          width="400"
+          height="400"
+          onClick={() => this.graphResizeHandler('two')}>
           <Scatterplot
             x={50}
             y={50}
