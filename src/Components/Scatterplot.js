@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import * as d3 from 'd3'
 
 import Axis from './Axis'
 
-class Scatterplot extends Component {
+class Scatterplot extends PureComponent {
   state = {
     xScale: d3
       .scaleLinear()
