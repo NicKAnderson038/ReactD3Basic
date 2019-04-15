@@ -14,14 +14,6 @@ class Scatterplot extends Component {
       .domain([0, 1])
       .range([0, this.props.height])
   }
-  // xScale = d3
-  //   .scaleLinear()
-  //   .domain([0, 1])
-  //   .range([0, this.props.width])
-  // yScale = d3
-  //   .scaleLinear()
-  //   .domain([0, 1])
-  //   .range([0, this.props.height])
 
   static getDerivedStateFromProps(props, state) {
     let { xScale, yScale } = state
