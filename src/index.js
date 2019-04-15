@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import * as d3 from 'd3'
 
@@ -13,24 +13,26 @@ const data = d3
   ])
 
 console.log(data)
-function App() {
-  return (
-    <div className="App">
-      <h1>
-        Basic D3 Scatter Plot Graph
-      </h1>
-      <br />
-      <svg width="800" height="800">
-        <Scatterplot
-          x={50}
-          y={50}
-          data={data}
-          width={300}
-          height={300}
-        />
-      </svg>
-    </div>
-  )
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <h1>
+          Basic D3 Scatter Plot Graph
+        </h1>
+        <br />
+        <svg width="800" height="800">
+          <Scatterplot
+            x={50}
+            y={50}
+            data={data}
+            width={300}
+            height={300}
+          />
+        </svg>
+      </div>
+    )
+  }
 }
 
 const rootElement = document.getElementById(
