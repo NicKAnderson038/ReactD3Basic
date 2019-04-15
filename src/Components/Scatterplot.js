@@ -28,7 +28,7 @@ class Scatterplot extends PureComponent {
     }
   }
 
-  dataPlotHandler = (datapoint, xScale, yScale) => {
+  dataPlotHandler(datapoint, xScale, yScale) {
     return datapoint({
       x: xScale,
       y: yScale
