@@ -11,24 +11,24 @@ const data = d3.range(100).map(() => [Math.random(), Math.random()])
 console.log(data)
 class App extends Component {
   state = {
-    width1: 300,
-    height1: 300,
-    width2: 300,
-    height2: 300
+    widthTop: 300,
+    heightTop: 300,
+    widthBottom: 300,
+    heightBottom: 300
   }
 
   graphResizeHandler(flag) {
     switch (flag) {
-      case 'one':
+      case 'top':
         this.setState({
-          width1: this.state.width1 * 0.8,
-          height1: this.state.height1 * 0.8
+          widthTop: this.state.widthTop * 0.8,
+          heightTop: this.state.heightTop * 0.8
         })
         return
-      case 'two':
+      case 'bottom':
         this.setState({
-          width2: this.state.width2 * 0.8,
-          height2: this.state.height2 * 0.8
+          widthBottom: this.state.widthBottom * 0.8,
+          heightBottom: this.state.heightBottom * 0.8
         })
         return
       default:
@@ -48,26 +48,26 @@ class App extends Component {
         <svg
           width="400"
           height="400"
-          onClick={() => this.graphResizeHandler('one')}>
+          onClick={() => this.graphResizeHandler('top')}>
           <Scatterplot
             x={50}
             y={50}
             data={data}
-            width={this.state.width1}
-            height={this.state.height1}
+            width={this.state.widthTop}
+            height={this.state.heightTop}
             datapoint={({ x, y }) => <Datapoint x={x} y={y} />}
           />
         </svg>
         <svg
           width="400"
           height="400"
-          onClick={() => this.graphResizeHandler('two')}>
+          onClick={() => this.graphResizeHandler('bottom')}>
           <Scatterplot
             x={50}
             y={50}
             data={data}
-            width={this.state.width2}
-            height={this.state.height2}
+            width={this.state.widthBottom}
+            height={this.state.heightBottom}
             datapoint={({ x, y }) => <Datapoint x={x} y={y} />}
           />
         </svg>
