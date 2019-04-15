@@ -22,18 +22,6 @@ class Scatterplot extends Component {
           r="3"
           key={`${x + y}`}
         />
-        <Axis
-          x={0}
-          y={0}
-          scale={this.yScale}
-          type="Left"
-        />
-        <Axis
-          x={0}
-          y={height}
-          scale={this.xScale}
-          type="Bottom"
-        />
       </React.Fragment>
     ))
   }
@@ -53,6 +41,18 @@ class Scatterplot extends Component {
           data,
           height
         )}
+        <Axis
+          x={0}
+          y={0}
+          scale={this.yScale}
+          type="Left"
+        />
+        <Axis
+          x={0}
+          y={height}
+          scale={this.xScale}
+          type="Bottom"
+        />
       </g>
     )
   }
