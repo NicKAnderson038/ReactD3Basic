@@ -4,52 +4,55 @@ import * as d3 from 'd3'
 import Axis from './Axis'
 
 class Scatterplot extends Component {
-  xScale = d3
-    .scaleLinear()
-    .domain([0, 1])
-    .range([0, this.props.width])
-  yScale = d3
-    .scaleLinear()
-    .domain([0, 1])
-    .range([0, this.props.height])
+  state = {
+    xScale: d3
+      .scaleLinear()
+      .domain([0, 1])
+      .range([0, this.props.width]),
+    yScale: d3
+      .scaleLinear()
+      .domain([0, 1])
+      .range([0, this.props.height])
+  }
+  // xScale = d3
+  //   .scaleLinear()
+  //   .domain([0, 1])
+  //   .range([0, this.props.width])
+  // yScale = d3
+  //   .scaleLinear()
+  //   .domain([0, 1])
+  //   .range([0, this.props.height])
 
-  dataPlotHandler = data => {
+  static getDerivedStateFromProps(props, state) {
+    let { xScale, yScale } = state
+    xScale.range([0, props.width])
+    yScale.range([0, props.height])
+
+    return {
+      ...state,
+      xScale,
+      yScale
+    }
+  }
+
+  dataPlotHandler = (data, xScale, yScale) => {
     return data.map(([x, y]) => (
       <React.Fragment>
-        <circle
-          cx={this.xScale(x)}
-          cy={this.yScale(y)}
-          r="3"
-          key={`${x + y}`}
-        />
+        <circle cx={xScale(x)} cy={yScale(y)} r="3" key={`${x + y}`} />
       </React.Fragment>
     ))
   }
 
   render() {
-    const {
-      x,
-      y,
-      data,
-      height
-    } = this.props
+    const { x, y, data, height } = this.props
+
+    const { xScale, yScale } = this.state
 
     return (
-      <g
-        transform={`translate(${x}, ${y})`}>
-        {this.dataPlotHandler(data)}
-        <Axis
-          x={0}
-          y={0}
-          scale={this.yScale}
-          type="Left"
-        />
-        <Axis
-          x={0}
-          y={height}
-          scale={this.xScale}
-          type="Bottom"
-        />
+      <g transform={`translate(${x}, ${y})`}>
+        {this.dataPlotHandler(data, xScale, yScale)}
+        <Axis x={0} y={0} scale={yScale} type="Left" />
+        <Axis x={0} y={height} scale={xScale} type="Bottom" />
       </g>
     )
   }

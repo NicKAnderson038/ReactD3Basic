@@ -14,6 +14,18 @@ const data = d3
 
 console.log(data)
 class App extends Component {
+  state = {
+    width: 300,
+    height: 300
+  }
+
+  onClick() {
+    this.setState({
+      width: this.state.width * 0.8,
+      height: this.state.height * 0.8
+    })
+  }
+
   render() {
     return (
       <div className="App">
@@ -21,13 +33,18 @@ class App extends Component {
           Basic D3 Scatter Plot Graph
         </h1>
         <br />
-        <svg width="800" height="800">
+        <svg
+          width="800"
+          height="800"
+          onClick={() =>
+            this.onClick()
+          }>
           <Scatterplot
             x={50}
             y={50}
             data={data}
-            width={300}
-            height={300}
+            width={this.state.width}
+            height={this.state.height}
           />
         </svg>
       </div>
