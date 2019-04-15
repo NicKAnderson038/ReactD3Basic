@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React from 'react'
+// import React, { Component } from 'react'
 import styled from '@emotion/styled'
 
 const Circle = styled.circle`
