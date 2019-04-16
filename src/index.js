@@ -43,7 +43,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Basic D3 Scatter Plot Graph</h1>
+        <h1>D3 Scatter Plot Graph</h1>
         <br />
         <svg
           width="400"
