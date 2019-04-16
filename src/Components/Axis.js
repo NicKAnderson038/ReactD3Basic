@@ -25,14 +25,10 @@ class Axis extends React.Component {
   d3Render() {
     const { type } = this.props
 
-    d3.select(this.gRef.current).call(
-      d3[`axis${type}`](
-        this.props.scale
-      )
-    )
+    d3.select(this.gRef.current).call(d3[`axis${type}`](this.props.scale))
   }
 
-  get labelPos() {
+  labelPos = () => {
     const { type, scale } = this.props
 
     switch (type) {
@@ -59,12 +55,8 @@ class Axis extends React.Component {
     const { x, y, label } = this.props
 
     return (
-      <g
-        ref={this.gRef}
-        transform={`translate(${x}, ${y})`}>
-        <Text {...this.labelPos}>
-          {label}
-        </Text>
+      <g ref={this.gRef} transform={`translate(${x}, ${y})`}>
+        <Text {...this.labelPos}>{label}</Text>
       </g>
     )
   }
