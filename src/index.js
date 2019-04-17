@@ -25,7 +25,7 @@ class App extends Component {
           zoomInHeight: this.state.zoomInHeight * 0.8
         })
         return
-      case 'bottom':
+      case 'place-holder':
         this.setState({
           widthBottom: this.state.widthBottom * 0.8,
           heightBottom: this.state.heightBottom * 0.8
@@ -58,10 +58,7 @@ class App extends Component {
             datapoint={({ x, y }) => <Datapoint x={x} y={y} />}
           />
         </svg>
-        <svg
-          width="400"
-          height="400"
-          onClick={() => this.graphResizeHandler('bottom')}>
+        <svg width="400" height="400">
           <Scatterplot
             x={50}
             y={50}
