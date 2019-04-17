@@ -11,18 +11,18 @@ const data = d3.range(100).map(() => [Math.random(), Math.random()])
 console.log(data)
 class App extends Component {
   state = {
-    widthTop: 300,
-    heightTop: 300,
+    zoomInWidth: 300,
+    zoomInHeight: 300,
     widthBottom: 300,
     heightBottom: 300
   }
 
   graphResizeHandler(flag) {
     switch (flag) {
-      case 'top':
+      case 'zoomIn':
         this.setState({
-          widthTop: this.state.widthTop * 0.8,
-          heightTop: this.state.heightTop * 0.8
+          zoomInWidth: this.state.zoomInWidth * 0.8,
+          zoomInHeight: this.state.zoomInHeight * 0.8
         })
         return
       case 'bottom':
@@ -48,13 +48,13 @@ class App extends Component {
         <svg
           width="400"
           height="400"
-          onClick={() => this.graphResizeHandler('top')}>
+          onClick={() => this.graphResizeHandler('zoomIn')}>
           <Scatterplot
             x={50}
             y={50}
             data={data}
-            width={this.state.widthTop}
-            height={this.state.heightTop}
+            width={this.state.zoomInWidth}
+            height={this.state.zoomInHeight}
             datapoint={({ x, y }) => <Datapoint x={x} y={y} />}
           />
         </svg>
