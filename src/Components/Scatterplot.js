@@ -38,7 +38,7 @@ class Scatterplot extends PureComponent {
   }
 
   componentDidMount() {
-    console.log('BRUSH', this.brush)
+    console.log('BRUSH mount')
     this.brush = d3
       .brush()
       .extent([
@@ -50,7 +50,7 @@ class Scatterplot extends PureComponent {
   }
 
   componentDidUpdate() {
-    console.log('BRUSH', this.brush)
+    console.log('BRUSH update')
     this.brush = d3
       .brush()
       .extent([
@@ -80,7 +80,7 @@ class Scatterplot extends PureComponent {
       //   xScale: null, // this.state.width * 0.8,
       //   yScale: null // this.state.height * 0.8
       // })
-      this.props.updateRange([])
+      // this.props.updateRange([])
       return
     }
     const [x1, x2] = d3.event.selection
