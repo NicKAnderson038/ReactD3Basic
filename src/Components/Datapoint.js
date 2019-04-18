@@ -20,7 +20,6 @@ const Circle = styled.circle`
 
 const datapoint = props => {
   const { x, y } = props
-
   return <Circle cx={x} cy={y} r="3" key={`${x}${y}`} />
 }
 

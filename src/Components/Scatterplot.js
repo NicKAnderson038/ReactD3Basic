@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react'
 import * as d3 from 'd3'
+import _ from 'lodash'
 
 import Axis from './Axis'
 
@@ -14,7 +15,9 @@ class Scatterplot extends PureComponent {
     yScale: d3
       .scaleLinear()
       .domain([0, 1])
-      .range([0, this.props.height])
+      .range([0, this.props.height]),
+    centerX: null,
+    centerY: null
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -51,46 +54,79 @@ class Scatterplot extends PureComponent {
 
   componentDidUpdate() {
     console.log('BRUSH update')
-    this.brush = d3
-      .brush()
-      .extent([
-        [margin.left, margin.top],
-        [this.props.width, this.props.height]
-      ])
-      .on('end', this.brushEnd)
-    d3.select(this.refs.brush).call(this.brush)
+    // d3.brush()
+    //   // .extent([
+    //   //   [margin.left, margin.top],
+    //   //   [this.props.width, this.props.height]
+    //   // ])
+    //   .on('end', e => console.log('end brush: ', e))
+    const x = d3.event.type
+    console.log(x)
   }
 
-  brushEnd = (x = this.state.xScale, y = this.state.yScale) => {
-    console.log('Brush End')
-    const circles = d3.selectAll('circle')
-    console.log(
-      circles
-      // .data(this.state.data)
-      // .attr('cx', function(d) {
-      //   console.log(d)
-      //   return x(d[0])
-      // })
-      // .attr('cy', function(d) {
-      //   return y(d[0])
-      // })
-    )
-    if (!d3.event.selection) {
-      // this.setState({
-      //   xScale: null, // this.state.width * 0.8,
-      //   yScale: null // this.state.height * 0.8
-      // })
-      // this.props.updateRange([])
-      return
-    }
+  // brushEnd = (x = this.state.xScale) => {
+  //   const y = d3
+  //     .scaleLinear()
+  //     .domain([0, 1])
+  //     .range([0, this.props.height])
+  //   console.log('++++++++++++++++++++++++++++++++++++++++')
+  //   console.log('xScale: ', x, this.props.width)
+  //   console.log('yScale: ', y, this.props.height)
+  //   console.log('Brush End')
+  //   const circles = d3.selectAll('circle')
+  //   console.log(
+  //     'circles: ',
+  //     circles._groups[0]
+  //     // .data(this.state.data)
+  //     // .attr('cx', function(d) {
+  //     //   console.log(d)
+  //     //   return x(d[0])
+  //     // })
+  //     // .attr('cy', function(d) {
+  //     //   return y(d[0])
+  //     // })
+  //   )
+  //   if (!d3.event.selection) {
+  //     // this.setState({
+  //     //   xScale: null, // this.state.width * 0.8,
+  //     //   yScale: null // this.state.height * 0.8
+  //     // })
+  //     // this.props.updateRange([])
+  //     return
+  //   }
+  //   const [x1, x2] = d3.event.selection
+  //   console.log('section results: ', x1, x2)
+
+  //   // individual circles
+  //   const t = d3.transition().duration(750)
+  //   const result = []
+  //   circles.transition(t)._groups[0].forEach(d => {
+  //     const z = _.values(d)
+  //     let cx = x(z[1].cx)
+  //     let cy = y(z[1].cy)
+  //     // console.log('cx: ', cx, ' & cy: ', cy)
+  //     return result.push([cx, cy])
+  //   })
+  //   console.log('Result: ', result)
+  //   return result
+  // }
+
+  brushEnd = () => {
     const [x1, x2] = d3.event.selection
-    console.log(x1, x2, this.state.xScale)
-    const range = [this.state.xScale.invert(x1), this.state.xScale.invert(x2)]
-    console.log('range: ', range)
-    this.props.updateRange(range)
+    console.log('section results: ', x1, x2)
+    console.log(this.props.width, this.props.height)
+    const centerX = (this.props.width + (x1[0] + x2[0]) / 2) * 2
+    const centerY = (this.props.height + (x1[1] + x2[1]) / 2) * 2
+    console.log(centerX, centerY)
+    // this.setState({
+    //   centerX: centerX,
+    //   centerY: centerY
+    // })
+    this.props.triggerGraphResizeHandler('bottom-graph', centerX, centerY)
   }
 
   render() {
+    console.log('render')
     const { x, y, data, height, datapoint } = this.props
 
     const { xScale, yScale } = this.state
