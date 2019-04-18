@@ -58,6 +58,10 @@ class Scatterplot extends PureComponent {
     //   //   [this.props.width, this.props.height]
     //   // ])
     //   .on('end', e => console.log('end brush: ', e))
+    // this.setState({
+    //   xScale: d3.transition().duration(750),
+    //   yScale: d3.transition().duration(750)
+    // })
     const x = d3.event.type
     console.log(x)
   }
