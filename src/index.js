@@ -7,10 +7,12 @@ import Scatterplot from './Components/Scatterplot'
 import Datapoint from './Components/Datapoint'
 
 const data = d3.range(100).map(() => [Math.random(), Math.random()])
+// const margin = { top: 0, right: 0, bottom: 0, left: 0 }
 
 console.log(data)
 class App extends Component {
   state = {
+    // brush: React.createRef(),
     zoomInWidth: 300,
     zoomInHeight: 300,
     widthBottom: 300,
@@ -21,8 +23,8 @@ class App extends Component {
     switch (flag) {
       case 'zoomIn':
         this.setState({
-          zoomInWidth: this.state.zoomInWidth * 0.8,
-          zoomInHeight: this.state.zoomInHeight * 0.8
+          zoomInWidth: this.state.zoomInWidth / 0.9,
+          zoomInHeight: this.state.zoomInHeight / 0.9
         })
         return
       case 'place-holder':
@@ -39,6 +41,33 @@ class App extends Component {
     //   height: this.state.height * 0.8
     // })
   }
+
+  // componentDidMount() {
+  //   this.brush = d3
+  //     .brush()
+  //     .extent([
+  //       [margin.left, margin.top],
+  //       [this.props.width - margin.right, this.props.height - margin.bottom]
+  //     ])
+  //     .on('end', this.brushEnd)
+  //   d3.select(this.refs.brush).call(this.brush)
+  // }
+
+  // brushEnd = () => {
+  //   console.log(this.refs.xAxis, d3.event.selection)
+  //   if (!d3.event.selection) {
+  //     // this.setState({
+  //     //   xScale: null, // this.state.width * 0.8,
+  //     //   yScale: null // this.state.height * 0.8
+  //     // })
+  //     // this.props.updateRange([])
+  //     return
+  //   }
+  //   const [x1, x2] = d3.event.selection
+  //   const range = [this.state.xScale.invert(x1), this.state.xScale.invert(x2)]
+
+  //   this.props.updateRange(range)
+  // }
 
   render() {
     return (
