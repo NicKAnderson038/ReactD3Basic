@@ -127,6 +127,10 @@ class Scatterplot extends PureComponent {
 
     const { xScale, yScale } = this.state
 
+    const transitionHandler = () => {
+      console.log(d3.event)
+    }
+    transitionHandler()
     return (
       <g transform={`translate(${x}, ${y})`} ref="brush">
         {data.map(([x, y]) =>
