@@ -9,32 +9,34 @@ import Datapoint from './Components/Datapoint'
 const data = d3.range(100).map(() => [Math.random(), Math.random()])
 // const margin = { top: 0, right: 0, bottom: 0, left: 0 }
 
-const centerX = (0 + 56) / 2 / 100
-const centerY = (0 + 61.125) / 2 / 100
+const rectCenterX = (0 + 56) / 2 / 100
+const rectCenterY = (0 + 61.125) / 2 / 100
 
-console.log('CALC: ', centerX, centerY)
+console.log('CALC: ', rectCenterX, rectCenterY)
 console.log(data)
 class App extends Component {
   state = {
     zoomInWidth: 300,
     zoomInHeight: 300,
     widthBottom: 300,
-    heightBottom: 300
+    heightBottom: 300,
+    x: 50,
+    y: 50
   }
 
-  graphResizeHandler = (flag, x = 0, y = 0) => {
-    console.log('TEST: ', x, y)
+  graphResizeHandler = (flag, centerX, centerY) => {
+    console.log('TEST:')
     switch (flag) {
       case 'top-graph':
         this.setState({
-          zoomInWidth: this.state.zoomInWidth / centerX,
-          zoomInHeight: this.state.zoomInHeight / centerY
+          zoomInWidth: this.state.zoomInWidth / rectCenterX,
+          zoomInHeight: this.state.zoomInHeight / rectCenterY
         })
         return
       case 'bottom-graph':
         this.setState({
-          widthBottom: x,
-          heightBottom: y
+          widthBottom: centerX,
+          heightBottom: centerY
         })
         return
       default:
@@ -74,8 +76,8 @@ class App extends Component {
         <svg width="400" height="400" transform>
           <Scatterplot
             triggerGraphResizeHandler={this.graphResizeHandler}
-            x={50}
-            y={50}
+            x={this.state.x}
+            y={this.state.y}
             data={data}
             width={this.state.widthBottom}
             height={this.state.heightBottom}

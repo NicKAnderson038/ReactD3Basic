@@ -116,10 +116,14 @@ class Scatterplot extends PureComponent {
 
   brushEnd = () => {
     const [x1, x2] = d3.event.selection
-    const centerX = (this.props.width + (x1[0] + x2[0]) / 2) * 2
-    const centerY = (this.props.height + (x1[1] + x2[1]) / 2) * 2
+    const centerX = (this.props.width + (x1[0] + x2[0]) / 2) * 3
+    const centerY = (this.props.height + (x1[1] + x2[1]) / 2) * 3
+    const x = (x1[0] + x2[0]) / 2
+    const y = (x1[1] + x2[1]) / 2
     console.log(centerX, centerY)
+    console.log(x, y)
     this.props.triggerGraphResizeHandler('bottom-graph', centerX, centerY)
+    // this.props.triggerGraphResizeHandler('bottom-graph', centerX, centerY)
   }
 
   render() {
