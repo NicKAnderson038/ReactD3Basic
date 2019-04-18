@@ -16,7 +16,6 @@ console.log('CALC: ', centerX, centerY)
 console.log(data)
 class App extends Component {
   state = {
-    // brush: React.createRef(),
     zoomInWidth: 300,
     zoomInHeight: 300,
     widthBottom: 300,
@@ -30,8 +29,6 @@ class App extends Component {
         this.setState({
           zoomInWidth: this.state.zoomInWidth / centerX,
           zoomInHeight: this.state.zoomInHeight / centerY
-          // zoomInWidth: this.state.zoomInWidth / 0.9,
-          // zoomInHeight: this.state.zoomInHeight / 0.9
         })
         return
       case 'bottom-graph':
