@@ -62,6 +62,7 @@ class Scatterplot extends PureComponent {
     //   xScale: d3.transition().duration(750),
     //   yScale: d3.transition().duration(750)
     // })
+
     const x = d3.event.type
     console.log(x)
   }
@@ -122,7 +123,6 @@ class Scatterplot extends PureComponent {
   }
 
   render() {
-    console.log('render')
     const { x, y, data, height, datapoint } = this.props
 
     const { xScale, yScale } = this.state

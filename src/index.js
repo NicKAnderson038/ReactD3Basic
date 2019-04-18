@@ -47,10 +47,12 @@ class App extends Component {
   }
 
   render() {
-    const w = this.state.zoomInWidth
-    const h = this.state.zoomInHeight
+    const w = this.state.widthBottom
+    const h = this.state.heightBottom
     console.log('w & h: ', w, h)
-
+    if (w !== 300) {
+      // debugger
+    }
     console.log(Scatterplot)
     return (
       <div className="App">
@@ -69,7 +71,7 @@ class App extends Component {
             datapoint={({ x, y }) => <Datapoint x={x} y={y} />}
           />
         </svg>
-        <svg width="400" height="400">
+        <svg width="400" height="400" transform>
           <Scatterplot
             triggerGraphResizeHandler={this.graphResizeHandler}
             x={50}
