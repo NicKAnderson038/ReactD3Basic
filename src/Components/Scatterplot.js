@@ -15,9 +15,7 @@ class Scatterplot extends PureComponent {
     yScale: d3
       .scaleLinear()
       .domain([0, 1])
-      .range([0, this.props.height]),
-    centerX: null,
-    centerY: null
+      .range([0, this.props.height])
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -53,7 +51,7 @@ class Scatterplot extends PureComponent {
   }
 
   componentDidUpdate() {
-    console.log('BRUSH update')
+    console.log('BRUSH update', this.refs.brush)
     // d3.brush()
     //   // .extent([
     //   //   [margin.left, margin.top],
@@ -113,15 +111,9 @@ class Scatterplot extends PureComponent {
 
   brushEnd = () => {
     const [x1, x2] = d3.event.selection
-    console.log('section results: ', x1, x2)
-    console.log(this.props.width, this.props.height)
     const centerX = (this.props.width + (x1[0] + x2[0]) / 2) * 2
     const centerY = (this.props.height + (x1[1] + x2[1]) / 2) * 2
     console.log(centerX, centerY)
-    // this.setState({
-    //   centerX: centerX,
-    //   centerY: centerY
-    // })
     this.props.triggerGraphResizeHandler('bottom-graph', centerX, centerY)
   }
 
